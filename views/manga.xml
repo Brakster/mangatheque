@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+        <menuitem id="menu_manga"
+                  name="Mangathèque"
+                  web_icon="mangatheque,static/description/icon.png"/>
+
+        <record id="action_manga_list" model="ir.actions.act_window">
+            <field name="name">Liste des Mangas</field>
+            <field name="res_model">mangatheque.manga</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem   id="menu_manga_list"
+                    name="Liste des Mangas"
+                    parent="menu_manga"
+                    action="action_manga_list"/>
+    </data>
+</odoo>

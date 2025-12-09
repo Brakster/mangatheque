@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Catégorie d'application -->
+    <record id="module_manga_security" model="ir.module.category">
+        <field name="name">Mangathèque</field>
+        <field name="description">Droits de la mangathèque</field>
+        <field name="sequence">50</field>
+    </record>
+
+    <!-- Privilège (nouveau dans Odoo 19) qui rattache les groupes à la catégorie -->
+    <record id="priv_mangatheque" model="res.groups.privilege">
+        <field name="name">Mangathèque</field>
+        <field name="sequence">10</field>
+        <field name="category_id" ref="module_manga_security"/>
+    </record>
+
+    <!-- Groupe Utilisateurs -->
+    <record id="manga_group_user" model="res.groups">
+        <field name="name">Utilisateurs</field>
+        <field name="privilege_id" ref="priv_mangatheque"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <!-- Facultatif : associer des utilisateurs existants
+        <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
+        -->
+    </record>
+
+    <!-- Groupe Administrateurs -->
+    <record id="manga_group_admin" model="res.groups">
+        <field name="name">Administrateurs</field>
+        <field name="privilege_id" ref="priv_mangatheque"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <!-- Évite d'ajouter des users par défaut si tu n'es pas sûr des externals ids -->
+        <!-- <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/> -->
+    </record>
+
+</odoo>
