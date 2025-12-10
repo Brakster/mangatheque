@@ -4,22 +4,30 @@
     <!-- Catégorie d'application -->
     <record id="module_manga_security" model="ir.module.category">
         <field name="name">Mangathèque</field>
-        <field name="description">Droits de la mangatheque</field>
+        <field name="description">Droits de la mangathèque</field>
+    </record>
+
+    <!-- Privilege lié à la catégorie (Odoo 19) -->
+    <record id="manga_privilege" model="res.groups.privilege">
+        <field name="name">Mangathèque</field>
+        <field name="sequence">10</field>
+        <field name="category_id" ref="module_manga_security"/>
     </record>
 
     <!-- Groupe Utilisateurs -->
     <record id="manga_group_user" model="res.groups">
         <field name="name">Utilisateur</field>
-        <field name="category_id" ref="module_manga_security"/>
+        <field name="privilege_id" ref="manga_privilege"/>
         <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
     <!-- Groupe Administrateurs -->
     <record id="manga_group_manager" model="res.groups">
         <field name="name">Administrateur</field>
-        <field name="category_id" ref="module_manga_security"/>
+        <field name="privilege_id" ref="manga_privilege"/>
         <field name="implied_ids" eval="[(4, ref('manga_group_user'))]"/>
-        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        <!-- Ajouter des utilisateurs au groupe -->
+        <field name="user_ids" eval="[(4, ref('base.user_admin'))]"/>
     </record>
 
 </odoo>
