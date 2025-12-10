@@ -11,7 +11,7 @@
     <record id="manga_group_user" model="res.groups">
         <field name="name">Utilisateurs</field>
         <field name="catergory_id" ref="module_manga_security">
-        <field name="implied_ids"eval="[(4, ref('base.group_user'))]">
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]">
     </record>
 
     <!-- Groupe Administrateurs -->
