@@ -1,20 +1,54 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
     <data>
+
+        <!-- MENU RACINE -->
         <menuitem id="menu_manga"
                   name="Mangathèque"
                   web_icon="mangatheque,static/description/icon.png"/>
 
-        <record id="action_manga_list" model="ir.actions.act_window">
-            <field name="name">Liste des Mangas</field>
-            <field name="res_model">manga</field>
-            <field name="view_mode">tree,form</field>
+        <!-- VUE LISTE (TREE) -->
+        <record id="view_manga_tree" model="ir.ui.view">
+            <field name="name">mangatheque.manga.tree</field>
+            <field name="model">mangatheque.manga</field>
+            <field name="arch" type="xml">
+                <tree string="Mangas">
+                    <field name="name"/>
+                    <!-- ajoute ici d'autres champs (auteur, tome, etc.) quand ils existeront -->
+                </tree>
+            </field>
         </record>
 
-        <menuitem   id="menu_manga_list"
-                    name="Liste des Mangas"
-                    parent="menu_manga"
-                    action="action_manga_list"/>
+        <!-- VUE FORMULAIRE -->
+        <record id="view_manga_form" model="ir.ui.view">
+            <field name="name">mangatheque.manga.form</field>
+            <field name="model">mangatheque.manga</field>
+            <field name="arch" type="xml">
+                <form string="Manga">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <!-- idem, autres champs ensuite -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- ACTION -->
+        <record id="action_manga_list" model="ir.actions.act_window">
+            <field name="name">Liste des Mangas</field>
+            <field name="res_model">mangatheque.manga</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_manga_tree"/>
+        </record>
+
+        <!-- SOUS-MENU -->
+        <menuitem id="menu_manga_list"
+                  name="Liste des Mangas"
+                  parent="menu_manga"
+                  action="action_manga_list"/>
+
     </data>
 </odoo>
