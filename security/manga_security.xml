@@ -19,7 +19,7 @@
         <field name="name">Administrateur</field>
         <field name="category_id" ref="module_manga_security"/>
         <field name="implied_ids" eval="[(4, ref('manga_group_user'))]"/>
-        <field name="users" eval="[(4, ref('base.user_root)), (4, ref('bade.user_admin'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
     </record>
 
 </odoo>
