@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 
+#erreure potentielle dans le fichier d'accès
 
 class mangatheque(models.Model):
     _name = 'mangatheque.mangatheque'
