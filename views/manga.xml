@@ -8,15 +8,15 @@
                   name="Mangathèque"
                   web_icon="mangatheque,static/description/icon.png"/>
 
-        <!-- VUE LISTE (TREE) -->
-        <record id="view_manga_tree" model="ir.ui.view">
-            <field name="name">mangatheque.manga.tree</field>
+        <!-- VUE LISTE -->
+        <record id="view_manga_list" model="ir.ui.view">
+            <field name="name">mangatheque.manga.list</field>
             <field name="model">mangatheque.manga</field>
             <field name="arch" type="xml">
-                <tree string="Mangas">
+                <list string="Mangas">
                     <field name="name"/>
                     <!-- ajoute ici d'autres champs (auteur, tome, etc.) quand ils existeront -->
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -41,7 +41,7 @@
             <field name="name">Liste des Mangas</field>
             <field name="res_model">mangatheque.manga</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="view_manga_tree"/>
+            <field name="view_id" ref="view_manga_list"/>
         </record>
 
         <!-- SOUS-MENU -->
